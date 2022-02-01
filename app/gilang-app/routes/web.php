@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BarangController;
 use App\Http\Controllers\DistributorController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\HomeController;
@@ -21,3 +22,4 @@ Route::get('/', [HomeController::class, 'index']);
 Route::resource('employee', EmployeeController::class);
 Route::resource('kategori', KategoriController::class);
 Route::resource('distributor', DistributorController::class);
+Route::resource('barang', BarangController::class);
