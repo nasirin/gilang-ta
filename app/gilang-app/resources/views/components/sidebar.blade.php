@@ -11,7 +11,7 @@
         <li class="nav-heading">Admin</li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#">
+            <a class="nav-link collapsed" href="kategori">
                 <i class="bx bxs-category-alt"></i>
                 <span>Kategori</span>
             </a>
