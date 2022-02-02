@@ -5,6 +5,7 @@ use App\Http\Controllers\DistributorController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\StockInController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,3 +24,4 @@ Route::resource('employee', EmployeeController::class);
 Route::resource('kategori', KategoriController::class);
 Route::resource('distributor', DistributorController::class);
 Route::resource('barang', BarangController::class);
+Route::resource('stockin', StockInController::class);

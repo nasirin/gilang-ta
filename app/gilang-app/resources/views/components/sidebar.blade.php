@@ -33,7 +33,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="stockin">
                         <i class="bi bi-circle"></i><span>Stock in</span>
                     </a>
                 </li>
