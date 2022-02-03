@@ -9,4 +9,9 @@ class barang extends Model
 {
     use HasFactory;
     protected $fillable = ['barang', 'qty'];
+
+    // public function stockin()
+    // {
+    //     return $this->hasMany(stockin::class,'barangs_id');
+    // }
 }

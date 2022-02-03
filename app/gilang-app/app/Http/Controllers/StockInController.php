@@ -16,11 +16,17 @@ class StockInController extends Controller
      */
     public function index()
     {
+        // $stockin = stockin::with('barang', 'distributor')->where('status', 'uncheck')->get();
+        // return response()->json($stockin);
+        // $barang = barang::with('stockin')->get();
         $data = [
-            'stockin' => stockin::where('status', 'uncheck')->get(),
+            'stockin' => stockin::with('barang', 'distributor')->where('status', 'uncheck')->get(),
+            'stockinChecked' => stockin::with('barang', 'distributor')->where('status', 'checked')->get(),
             'distributor' => distributor::all(),
             'barang' => barang::all(),
         ];
+
+        // dd($data);
 
         return view('pages.stockin', $data);
     }
@@ -80,7 +86,16 @@ class StockInController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $stockin = stockin::find($id);
+        $barang = barang::find($request->barang);
+        $dataBarang['qty'] = intval($barang['qty'] + $request['qty']);
+        $dataStockin['status'] = $request['status'];
+        $stockin->fill($dataStockin);
+        $stockin->save();
+        $barang->fill($dataBarang);
+        $barang->save();
+        toastr()->success('Stok sudah di periksa');
+        return redirect()->back();
     }
 
     /**
@@ -91,6 +106,17 @@ class StockInController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $stockin = stockin::find($id);
+
+        if ($stockin->status == 'checked') {
+            $barang = barang::find($stockin->barang_id);
+            $dataBarang['qty'] = intval($barang['qty'] - $stockin['qty_masuk']);
+            $barang->fill($dataBarang);
+            $barang->save();
+        }
+
+        $stockin->delete();
+        toastr()->success('Data stok terhapus');
+        return redirect()->back();
     }
 }

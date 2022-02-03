@@ -15,8 +15,8 @@ class CreateStockinsTable extends Migration
     {
         Schema::create('stockins', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('barangs_id')->constrained('barangs')->onDelete('cascade');
-            $table->foreignId('distributors_id')->constrained('distributors')->onDelete('cascade');
+            $table->foreignId('barang_id')->constrained('barangs')->onDelete('cascade');
+            $table->foreignId('distributor_id')->constrained('distributors')->onDelete('cascade');
             $table->bigInteger('qty_masuk');
             $table->bigInteger('harga_dist');
             $table->enum('status', ['checked', 'uncheck']);

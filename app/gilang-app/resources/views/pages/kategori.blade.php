@@ -53,6 +53,7 @@
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Kategori</th>
+                                        <th scope="col">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
