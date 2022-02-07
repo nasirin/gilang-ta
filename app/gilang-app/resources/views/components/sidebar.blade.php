@@ -8,6 +8,7 @@
                 <span>Dashboard</span>
             </a>
         </li><!-- End Dashboard Nav -->
+        @if(session('akses') == 'admin')
         <li class="nav-heading">Admin</li>
 
         <li class="nav-item">
@@ -56,7 +57,7 @@
                 <span>User</span>
             </a>
         </li>
-
+        @else
         <li class="nav-heading">Kasir</li>
 
         <li class="nav-item">
@@ -77,7 +78,7 @@
                 <span>Riwayat</span>
             </a>
         </li>
-
+        @endif
     </ul>
 
 </aside>

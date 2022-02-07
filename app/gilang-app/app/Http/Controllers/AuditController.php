@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\audit;
 use App\Models\barang;
 use Illuminate\Http\Request;
-use PDF;
+
 
 class AuditController extends Controller
 {
@@ -35,53 +35,5 @@ class AuditController extends Controller
 
         toastr()->success('Data berhasil di hapus');
         return redirect()->back();
-    }
-
-    public function LaporanInventory()
-    {
-        $data = [
-            'title' => 'Welcome to ItSolutionStuff.com',
-            'date' => date('m/d/Y')
-        ];
-
-        $pdf = PDF::loadView('pages.audit', $data);
-
-        return $pdf->download('Laporan-inventory.pdf');
-    }
-
-    public function LaporanStockin()
-    {
-        $data = [
-            'title' => 'Welcome to ItSolutionStuff.com',
-            'date' => date('m/d/Y')
-        ];
-
-        $pdf = PDF::loadView('pages.audit', $data);
-
-        return $pdf->download('Laporan-inventory.pdf');
-    }
-
-    public function LaporanPenjualan()
-    {
-        $data = [
-            'title' => 'Welcome to ItSolutionStuff.com',
-            'date' => date('m/d/Y')
-        ];
-
-        $pdf = PDF::loadView('pages.audit', $data);
-
-        return $pdf->download('Laporan-inventory.pdf');
-    }
-
-    public function LaporanLabaKotor()
-    {
-        $data = [
-            'title' => 'Welcome to ItSolutionStuff.com',
-            'date' => date('m/d/Y')
-        ];
-
-        $pdf = PDF::loadView('pages.audit', $data);
-
-        return $pdf->download('Laporan-inventory.pdf');
     }
 }

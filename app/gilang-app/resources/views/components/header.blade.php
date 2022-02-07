@@ -23,12 +23,12 @@
 
                 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="/template/#" data-bs-toggle="dropdown">
                     <img src="/img/user-icon.jpg" alt="Profile" class="rounded-circle">
-                    <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+                    <span class="d-none d-md-block dropdown-toggle ps-2">{{session('username')}}</span>
                 </a><!-- End Profile Iamge Icon -->
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="/template/#">
+                        <a class="dropdown-item d-flex align-items-center" href="/signout">
                             <i class="bi bi-box-arrow-right"></i>
                             <span>Sign Out</span>
                         </a>

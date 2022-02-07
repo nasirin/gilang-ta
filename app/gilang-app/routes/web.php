@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuditController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\DistributorController;
 use App\Http\Controllers\EmployeeController;
@@ -22,12 +23,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
-Route::resource('employee', EmployeeController::class);
-Route::resource('kategori', KategoriController::class);
-Route::resource('distributor', DistributorController::class);
-Route::resource('barang', BarangController::class);
-Route::resource('stockin', StockInController::class);
-Route::resource('produk', ProdukController::class);
-Route::resource('audit', AuditController::class);
-Route::post('laporan', [LaporanController::class, 'store']);
+Route::group(['middleware' => 'loged'], function () {
+    Route::get('/', [HomeController::class, 'index']);
+    Route::resource('employee', EmployeeController::class);
+    Route::resource('kategori', KategoriController::class);
+    Route::resource('distributor', DistributorController::class);
+    Route::resource('barang', BarangController::class);
+    Route::resource('stockin', StockInController::class);
+    Route::resource('produk', ProdukController::class);
+    Route::resource('audit', AuditController::class);
+    Route::post('laporan', [LaporanController::class, 'store']);
+    Route::get('laporan', [LaporanController::class, 'index']);
+});
+Route::get('login', [AuthController::class, 'index'])->middleware('already_loged');
+Route::get('signout', [AuthController::class, 'signout']);
+Route::post('login', [AuthController::class, 'login']);
