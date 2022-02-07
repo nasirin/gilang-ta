@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\audit;
 use App\Models\barang;
 use Illuminate\Http\Request;
 
@@ -36,7 +37,7 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-        barang::create($request->all());
+        $barang = barang::create($request->all());
         toastr()->success('Data berhasil di tambah');
         return redirect()->back();
     }

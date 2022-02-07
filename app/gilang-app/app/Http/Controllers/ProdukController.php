@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\barang;
-use App\Models\distributor;
-use App\Models\stockin;
+use App\Models\kategori;
+use App\Models\produk;
+use App\Models\produk_detail;
 use Illuminate\Http\Request;
 
-class StockInController extends Controller
+class ProdukController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,15 +18,10 @@ class StockInController extends Controller
     public function index()
     {
         $data = [
-            'stockin' => stockin::with('barang', 'distributor')->where('status', 'uncheck')->get(),
-            'stockinChecked' => stockin::with('barang', 'distributor')->where('status', 'checked')->get(),
-            'distributor' => distributor::all(),
-            'barang' => barang::all(),
+            'produk' => produk::with('kategori')->get(),
+            'kategori' => kategori::all(),
         ];
-
-        // dd($data);
-
-        return view('pages.stockin', $data);
+        return view('pages.produk', $data);
     }
 
     /**
@@ -46,8 +42,8 @@ class StockInController extends Controller
      */
     public function store(Request $request)
     {
-        stockin::create($request->all());
-        toastr()->success('Data berhasil di tambah');
+        $produk = produk::create($request->all());
+        toastr()->success('Data produk tersimpan');
         return redirect()->back();
     }
 
@@ -82,10 +78,11 @@ class StockInController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $stockin = stockin::find($id);
-        $stockin->fill($request->all());
-        $stockin->save();
-        toastr()->success('Stok sudah di periksa');
+        // return response()->json($request->all());
+        $produk = produk::find($id);
+        $produk->fill($request->all());
+        $produk->save();
+        toastr()->success('Data produk terupdate');
         return redirect()->back();
     }
 
@@ -97,9 +94,10 @@ class StockInController extends Controller
      */
     public function destroy($id)
     {
-        $stockin = stockin::find($id);
-        $stockin->delete();
-        toastr()->success('Data stok terhapus');
+        $produk = produk::find($id);
+        $produk->delete();
+
+        toastr()->success('Data produk terhapus');
         return redirect()->back();
     }
 }

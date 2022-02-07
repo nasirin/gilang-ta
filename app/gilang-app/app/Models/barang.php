@@ -8,10 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class barang extends Model
 {
     use HasFactory;
-    protected $fillable = ['barang', 'qty'];
-
-    // public function stockin()
-    // {
-    //     return $this->hasMany(stockin::class,'barangs_id');
-    // }
+    protected $fillable = ['barang', 'satuan'];
 }

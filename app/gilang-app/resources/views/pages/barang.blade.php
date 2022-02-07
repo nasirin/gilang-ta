@@ -28,12 +28,47 @@
                                         <input type="text" required class="form-control" autofocus name="barang" placeholder="Masukan nama barang">
                                     </div>
                                 </div>
-                                <div class="row mb-3">
-                                    <label for="inputText" class="col-sm-2 col-form-label">Qty</label>
+                                <fieldset class="row mb-3">
+                                    <legend class="col-form-label col-sm-2 pt-0">Satuan</legend>
                                     <div class="col-sm-10">
-                                        <input type="number" min="0" value="0" class="form-control" autofocus name="qty">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="satuan" id="kg" value="kg">
+                                            <label class="form-check-label" for="kg">
+                                                KG
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="satuan" id="g" value="g" checked>
+                                            <label class="form-check-label" for="g">
+                                                G
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="satuan" id="mg" value="mg">
+                                            <label class="form-check-label" for="mg">
+                                                MG
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="satuan" id="l" value="l">
+                                            <label class="form-check-label" for="l">
+                                                L
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="satuan" id="ml" value="ml">
+                                            <label class="form-check-label" for="ml">
+                                                ML
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="satuan" id="pcs" value="pcs">
+                                            <label class="form-check-label" for="pcs">
+                                                PCS
+                                            </label>
+                                        </div>
                                     </div>
-                                </div>
+                                </fieldset>
                                 <div class="row mb-3">
                                     <div class="col-sm-10">
                                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -59,7 +94,6 @@
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Barang</th>
-                                        <th scope="col">Qty</th>
                                         <th scope="col">Aksi</th>
                                     </tr>
                                 </thead>
@@ -68,7 +102,6 @@
                                     <tr>
                                         <th scope="row">{{$key+1}}</th>
                                         <td>{{$value['barang']}}</td>
-                                        <td>{{$value['qty']}}</td>
                                         <td>
                                             <button type="button" data-bs-toggle="modal" data-bs-target="#basicModal{{$value['id']}}" class="btn btn-warning btn-sm" data-bs><i class="bi bi-pencil"></i></button>
                                             <form action="/barang/{{$value['id']}}" method="post" class="d-inline">
@@ -111,13 +144,47 @@
                             <input type="text" required class="form-control" autofocus name="barang" placeholder="Masukan nama barang" value="{{$value['barang']}}">
                         </div>
                     </div>
-                    <div class="row mb-3">
-                        <label for="inputText" class="col-sm-2 col-form-label">Qty</label>
+                    <fieldset class="row mb-3">
+                        <legend class="col-form-label col-sm-2 pt-0">Satuan</legend>
                         <div class="col-sm-10">
-                            <input type="number" min="0" value="0" class="form-control" autofocus name="qty" value="{{$value['qty']}}">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="satuan" id="kg" value="kg" <?= $value['satuan'] == 'kg' ? 'checked' : '' ?>>
+                                <label class="form-check-label" for="kg">
+                                    KG
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="satuan" id="g" value="g" <?= $value['satuan'] == 'g' ? 'checked' : '' ?>>
+                                <label class="form-check-label" for="g">
+                                    G
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="satuan" id="mg" value="mg" <?= $value['satuan'] == 'mg' ? 'checked' : '' ?>>
+                                <label class="form-check-label" for="mg">
+                                    MG
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="satuan" id="l" value="l" <?= $value['satuan'] == 'l' ? 'checked' : '' ?>>
+                                <label class="form-check-label" for="l">
+                                    L
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="satuan" id="ml" value="ml" <?= $value['satuan'] == 'ml' ? 'checked' : '' ?>>
+                                <label class="form-check-label" for="ml">
+                                    ML
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="satuan" id="pcs" value="pcs" <?= $value['satuan'] == 'pcs' ? 'checked' : '' ?>>
+                                <label class="form-check-label" for="pcs">
+                                    PCS
+                                </label>
+                            </div>
                         </div>
-                    </div>
-
+                    </fieldset>
                     <div class="row mb-3">
                         <div class="col-sm-10">
                             <button type="submit" class="btn btn-primary">Submit</button>

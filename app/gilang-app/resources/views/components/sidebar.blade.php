@@ -17,7 +17,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#">
+            <a class="nav-link collapsed" href="produk">
                 <i class="bx bxl-product-hunt"></i>
                 <span>Produk</span>
             </a>
@@ -35,6 +35,11 @@
                 <li>
                     <a href="stockin">
                         <i class="bi bi-circle"></i><span>Stock in</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="audit">
+                        <i class="bi bi-circle"></i><span>Audit</span>
                     </a>
                 </li>
             </ul>

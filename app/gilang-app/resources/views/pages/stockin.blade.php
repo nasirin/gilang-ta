@@ -73,6 +73,7 @@
                                         </div>
                                     </div>
                                 </fieldset>
+
                                 <div class="row mb-3">
                                     <div class="col-sm-10">
                                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -191,7 +192,6 @@
 
             </div>
         </div>
-
     </div>
 </section>
 @endSection()
