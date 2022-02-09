@@ -60,15 +60,15 @@ class BasketController extends Controller
      */
     public function show($id)
     {
-        // $detail = tansaksiDetail::find($id)->with('transaksi', 'produk')->get();
-        $transaksi = transaksi::with('detail')->find($id)->get();
-        // $data = [
-        //     'detail' => tansaksiDetail::find($id)->with('transaksi', 'produk')->get(),
-        //     'transaksi' => transaksi::find($id),
-        //     'produk' => produk::all()
-        // ];
-        return response()->json($transaksi);
-        // return view('pages.transaksi.basket', $data);
+        // $detail = tansaksiDetail::with('transaksi', 'produk')->whereRelation('transaksi', 'id', '=', $id)->get();
+        // $transaksi = transaksi::with('detail')->whereRelation('transa')->get();
+        $data = [
+            'detail' => tansaksiDetail::with('transaksi', 'produk')->whereRelation('transaksi', 'id', '=', $id)->get(),
+            'transaksi' => transaksi::find($id),
+            'produk' => produk::all()
+        ];
+        // return response()->json($data);
+        return view('pages.transaksi.basket', $data);
     }
 
     /**
@@ -102,6 +102,7 @@ class BasketController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // $detail = tansaksiDetail::find($id);
+        // // dd($detail);
     }
 }
