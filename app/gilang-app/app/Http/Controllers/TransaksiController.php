@@ -20,7 +20,7 @@ class TransaksiController extends Controller
             'produk' => produk::all(),
             'detail' => tansaksiDetail::with('transaksi', 'produk')->get()
         ];
-        return view('pages.transaksi', $data);
+        return view('pages.transaksi.transaksi', $data);
     }
 
     /**

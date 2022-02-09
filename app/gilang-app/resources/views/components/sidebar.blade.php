@@ -67,15 +67,9 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#">
+            <a class="nav-link collapsed" href="produk">
                 <i class="bx bxs-food-menu"></i>
                 <span>Produk</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#">
-                <i class="bi bi-clock-history"></i>
-                <span>Riwayat</span>
             </a>
         </li>
         @endif

@@ -15,6 +15,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="row">
+                @if(session('akses') == 'admin')
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
@@ -81,6 +82,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
 
                 <!-- Recent Sales -->
                 <div class="col-12">
@@ -98,7 +100,9 @@
                                         <th scope="col">Produk</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Harga</th>
+                                        @if(session('akses') == 'admin')
                                         <th scope="col">Aksi</th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -109,6 +113,7 @@
                                         <td>{{$value['produk']}}</td>
                                         <td>{{$value['status']}}</td>
                                         <td>{{'Rp ' . number_format($value['harga'],0,',','.')}}</td>
+                                        @if(session('akses') == 'admin')
                                         <td>
                                             <button type="button" data-bs-toggle="modal" data-bs-target="#basicModal{{$value['id']}}" class="btn btn-warning btn-sm" data-bs><i class="bi bi-pencil"></i></button>
                                             <form action="/produk/{{$value['id']}}" method="post" class="d-inline">
@@ -117,6 +122,7 @@
                                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin?')"><i class="bi bi-trash"></i></button>
                                             </form>
                                         </td>
+                                        @endif
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -132,6 +138,8 @@
 
     </div>
 </section>
+
+@if(session('akses') == 'admin')
 
 @foreach($produk as $value)
 <?php
@@ -212,4 +220,6 @@ $produk = $value['produk'];
     </div>
 </div>
 @endforeach
+
+@endif
 @endSection()
