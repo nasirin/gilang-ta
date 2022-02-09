@@ -61,9 +61,9 @@
         <li class="nav-heading">Kasir</li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#">
+            <a class="nav-link collapsed" href="transaksi">
                 <i class="bi bi-currency-dollar"></i>
-                <span>Transaksi</span>
+                <span>Transaksi (under construction)</span>
             </a>
         </li>
         <li class="nav-item">

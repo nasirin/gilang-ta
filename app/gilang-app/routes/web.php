@@ -10,6 +10,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\StockInController;
+use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +33,7 @@ Route::group(['middleware' => 'loged'], function () {
     Route::resource('stockin', StockInController::class);
     Route::resource('produk', ProdukController::class);
     Route::resource('audit', AuditController::class);
+    Route::resource('transaksi', TransaksiController::class);
     Route::post('laporan', [LaporanController::class, 'store']);
     Route::get('laporan', [LaporanController::class, 'index']);
 });
