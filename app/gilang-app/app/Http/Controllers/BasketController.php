@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\produk;
+use Illuminate\Http\Request;
 use App\Models\tansaksiDetail;
 use App\Models\transaksi;
-use Illuminate\Http\Request;
+use App\Models\produk;
 
-class TransaksiController extends Controller
+class BasketController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +16,6 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        $data = [
-            'produk' => produk::all(),
-            'detail' => tansaksiDetail::with('transaksi', 'produk')->get()
-        ];
-        return view('pages.transaksi.transaksi', $data);
     }
 
     /**
@@ -43,10 +38,10 @@ class TransaksiController extends Controller
     {
         $data = $request->all();
         $data['kasir_id'] = session('id');
-        $transaksi = transaksi::create($data);
+        // $transaksi = transaksi::create($data);
         $produk = produk::find($request['produk_id']);
         $detail = [
-            'transaksi_id' => $transaksi['id'],
+            'transaksi_id' => $request['transaksi_id'],
             'produk_id' => $request['produk_id'],
             'qty' => $request['qty'],
             'keterangan' => $request['keterangan'],
@@ -54,7 +49,7 @@ class TransaksiController extends Controller
         ];
         tansaksiDetail::create($detail);
         toastr()->success('Data berhasil di tambah');
-        return redirect('basket/'.$transaksi['id']);    
+        return redirect('basket/' . $request['transaksi_id']);
     }
 
     /**
@@ -65,7 +60,15 @@ class TransaksiController extends Controller
      */
     public function show($id)
     {
-        //
+        // $detail = tansaksiDetail::find($id)->with('transaksi', 'produk')->get();
+        $transaksi = transaksi::with('detail')->find($id)->get();
+        // $data = [
+        //     'detail' => tansaksiDetail::find($id)->with('transaksi', 'produk')->get(),
+        //     'transaksi' => transaksi::find($id),
+        //     'produk' => produk::all()
+        // ];
+        return response()->json($transaksi);
+        // return view('pages.transaksi.basket', $data);
     }
 
     /**
@@ -88,12 +91,7 @@ class TransaksiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $transaksi = transaksi::find($id);
-        $data['status'] = 'success';
-        $transaksi->fill($data);
-        $transaksi->save();
-        toastr()->success('Order berhasil');
-        return redirect()->back();
+        //
     }
 
     /**
@@ -104,9 +102,6 @@ class TransaksiController extends Controller
      */
     public function destroy($id)
     {
-        $transaksi = tansaksiDetail::find($id);
-        $transaksi->delete();
-        toastr()->success('Data berhasil di hapus');
-        return redirect()->back();
+        //
     }
 }

@@ -15,7 +15,9 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $employee = employees::where('username', $request['username'])->where('password', $request['password'])->first();
-        if ($employee) {
+        // return response()->json($employee);
+        // dd($employee);
+        if ($employee != null) {
             $data = ['id' => $employee['id'], 'username' => $employee['username'], 'akses' => $employee['akses']];
             session($data);
             toastr()->success('Selamat data' . ' ' . session('username'));

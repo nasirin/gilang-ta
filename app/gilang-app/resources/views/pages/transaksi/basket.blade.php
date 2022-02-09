@@ -20,14 +20,9 @@
                         <div class="card-body">
                             <h5 class="card-title">Form Transaksi</h5>
 
-                            <form method="POST" action="/transaksi">
+                            <form method="POST" action="/basket">
                                 @csrf
-                                @foreach($detail as $value)
-                                @if($value['transaksi']['status'] == 'pending')
-                                <?php $id = $value['transaksi_id'] ?>
-                                @endif
-                                @endforeach
-                                <input type="text" value="<?= $id ?? '' ?>" name="produk_already">
+                                <input type="hidden" value="{{$transaksi['id']}}" name="transaksi_id">
                                 <div class="row mb-3">
                                     <label for="inputText" class="col-sm-2 col-form-label">Meja</label>
                                     <div class="col-sm-10">
@@ -74,20 +69,13 @@
                     <div class="card recent-sales overflow-auto">
 
                         <div class="card-body">
-                            @foreach($detail as $value)
-                            @if($value['transaksi']['status'] == 'pending')
-                            <?php $id = $value['transaksi_id'];
-                            $meja = $value['transaksi']['meja']
-                            ?>
-                            @endif
-                            @endforeach
                             <div class="d-flex justify-content-between">
                                 <div>
-                                    <h5 class="card-title">Data Transaksi meja <?= $meja ?? '' ?></h5>
+                                    <h5 class="card-title">Data Transaksi meja {{$transaksi['meja']}}</h5>
                                 </div>
                                 <div>
 
-                                    <form action="/transaksi/{{$id ?? ''}}" method="POST">
+                                    <form action="/transaksi/{{$transaksi['id']}}" method="POST">
                                         @csrf
                                         @method("PUT")
                                         <button type="submit" class="btn btn-sm btn-info">Order now</button>
@@ -118,7 +106,7 @@
                                         <td>{{$value['qty']}}</td>
                                         <td>{{"Rp ". number_format($value['total'],0,',','.')}}</td>
                                         <td>
-                                            <form action="/transaksi/{{$value['transaksi_id']}}" method="post" class="d-inline">
+                                            <form action="/transaksi/{{$value['id']}}" method="post" class="d-inline">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin?')"><i class="bi bi-trash"></i></button>

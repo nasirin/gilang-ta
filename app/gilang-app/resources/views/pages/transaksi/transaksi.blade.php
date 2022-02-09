@@ -22,12 +22,6 @@
 
                             <form method="POST" action="/transaksi">
                                 @csrf
-                                @foreach($detail as $value)
-                                @if($value['transaksi']['status'] == 'pending')
-                                <?php $id = $value['transaksi_id'] ?>
-                                @endif
-                                @endforeach
-                                <input type="text" value="<?= $id ?? '' ?>" name="produk_already">
                                 <div class="row mb-3">
                                     <label for="inputText" class="col-sm-2 col-form-label">Meja</label>
                                     <div class="col-sm-10">
