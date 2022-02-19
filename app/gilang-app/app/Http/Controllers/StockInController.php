@@ -6,6 +6,7 @@ use App\Models\barang;
 use App\Models\distributor;
 use App\Models\stockin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class StockInController extends Controller
 {
@@ -46,6 +47,22 @@ class StockInController extends Controller
      */
     public function store(Request $request)
     {
+        $data = $request->all();
+        $rule = [
+            'barang' => 'required',
+            "distributor" => 'required',
+            "qty" => 'required',
+            "harga" => 'required',
+            "status" => 'required',
+        ];
+        
+        $validate = Validator::make($data, $rule);
+        if ($validate->fails()) {
+            return response()->json([
+                'stauts' => 'error',
+                'message' => $validate->errors()
+            ]);
+        }
         stockin::create($request->all());
         toastr()->success('Data berhasil di tambah');
         return redirect()->back();
