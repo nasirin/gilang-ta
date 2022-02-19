@@ -58,7 +58,7 @@
                         <div class="card-body">
 
                             <h5 class="card-title">Data Audit</h5>
-                            <a href="/audit/create" class="btn btn-sm btn-info mb-3">Laporan</a>
+                            <a href="/laporan" class="btn btn-sm btn-info mb-3">Laporan</a>
 
                             <table class="table table-borderless datatable">
                                 <thead>

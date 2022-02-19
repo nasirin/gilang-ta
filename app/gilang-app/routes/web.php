@@ -37,7 +37,8 @@ Route::group(['middleware' => 'loged'], function () {
     Route::resource('transaksi', TransaksiController::class);
     Route::resource('basket', BasketController::class);
     Route::post('laporan', [LaporanController::class, 'store']);
-    Route::get('laporan', [LaporanController::class, 'index']);
+    Route::get('laporan', [LaporanController::class, 'LaporanLabaKotor']);
+    // Route::get('laporan/laba', [LaporanController::class, 'LaporanLabaKotor']);
 });
 Route::get('login', [AuthController::class, 'index'])->middleware('already_loged');
 Route::get('signout', [AuthController::class, 'signout']);

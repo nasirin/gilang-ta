@@ -10,15 +10,17 @@ class LaporanController extends Controller
 
     public function index()
     {
-        $data = [
-            'title' => 'Welcome to ItSolutionStuff.com',
-            'date' => date('m/d/Y')
-        ];
+        // $data = [
+        //     'title' => 'Welcome to ItSolutionStuff.com',
+        //     'date' => date('m/d/Y')
+        // ];
 
-        // return view('pages.laporan.inventory', $data);
-        $pdf = PDF::loadView('layouts.LaporanTemplate', $data);
+        // return view('pages.laporan.laba', $data);
+        // $pdf = PDF::loadView('layouts.LaporanTemplate', $data);
 
-        return $pdf->download('Laporan-inventory.pdf');
+        // return $pdf->download('Laporan-inventory.pdf');
+        // $this->LaporanInventory();
+        $this->LaporanLabaKotor();        
     }
 
     public function store()
@@ -32,11 +34,11 @@ class LaporanController extends Controller
     public function LaporanInventory()
     {
         $data = [
-            'title' => 'Welcome to ItSolutionStuff.com',
+            'title' => 'Laporan Inventory',
             'date' => date('m/d/Y')
         ];
 
-        $pdf = PDF::loadView('pages.audit', $data);
+        $pdf = PDF::loadView('pages.laporan.inventory', $data);
 
         return $pdf->download('Laporan-inventory.pdf');
     }
@@ -68,12 +70,12 @@ class LaporanController extends Controller
     public function LaporanLabaKotor()
     {
         $data = [
-            'title' => 'Welcome to ItSolutionStuff.com',
+            'title' => 'Laporan laba rugi',
             'date' => date('m/d/Y')
         ];
 
-        $pdf = PDF::loadView('pages.audit', $data);
+        $laba = PDF::loadView('pages.laporan.laba', $data);
 
-        return $pdf->download('Laporan-inventory.pdf');
+        return $laba->download('Laporan-laba.pdf');
     }
 }

@@ -1,30 +1,52 @@
-@extends('layouts.LaporanTemplate')
+<!DOCTYPE html>
+<html>
 
-@section('content')
-<div class="text-center">
-    <p>{{$title}}</p>
-    <p>{{$date}}</p>
-</div>
-<table class="table">
-    <thead>
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        h2,
+        h4 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>{{$title}}</h2>
+    <h4>{{$date}}</h4>
+
+    <table>
         <tr>
-            <th scope="col">#</th>
-            <th scope="col">Barang</th>
-            <th scope="col">Qty</th>
-            <th scope="col">Satuan</th>
-            <th scope="col">Harga</th>
-            <th scope="col">Total</th>
+            <th>#</th>
+            <th>Barang</th>
+            <th>Satuan</th>
+            <th>Qty</th>
+            <th>Harga satuan</th>
+            <th>Total</th>
         </tr>
-    </thead>
-    <tbody>
         <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
+            <th>1</th>
+            <td>Coklat</td>
+            <td>kg</td>
+            <td>20</td>
+            <td>Rp 2000</td>
+            <td>Rp 2.000.000</td>
         </tr>
-    </tbody>
-</table>
-@endsection
+    </table>
+
+</body>
+
+</html>

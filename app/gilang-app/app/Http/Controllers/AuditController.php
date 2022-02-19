@@ -36,9 +36,4 @@ class AuditController extends Controller
         toastr()->success('Data berhasil di hapus');
         return redirect()->back();
     }
-
-    public function create()
-    {
-        
-    }
 }
